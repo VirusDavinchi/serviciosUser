@@ -11,6 +11,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Email;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -36,15 +37,16 @@ public class Usuario implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 	
-	@Column(name = "nombre")
+	@Column(name = "nombre", length = 50)
     private String nombre;
 	
-	@Column(name = "apellidoPaterno")
+	@Column(name = "apellido_Paterno", length = 100)
     private String apellidoPaterno;
     
-	@Column(name = "apellidoMaterno")
+	@Column(name = "apellido_Materno", length = 100)
     private String apellidoMaterno;
     
+	@Email(message = "El email debe tener un formato válido")
 	@Column(name = "email")
     private String email;
     
